@@ -1,0 +1,24 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+docs: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+summary:
+  types: [oauth2]
+  oauth2_flows: [clientCredentials]
+  api_key_in: []
+schemes:
+  - name: oauth2
+    type: oauth2
+    flow: clientCredentials
+    description: >-
+      OAuth 2.0 Client Credentials grant (RFC 6749 Section 4.4). Base64-encode
+      `client_id:client_secret` and POST to the token endpoint to receive an
+      access_token valid for 24 hours. Send it as `Authorization: Bearer
+      {access_token}` on every request except the presigned document-upload PUT.
+    token_url_sandbox: https://auth.sandbox.api.fundingcircle.co.uk/oauth2/token
+    token_ttl_seconds: 86400
+    scopes: []
+    sources: [openapi/funding-circle-introducer-openapi.yml]
+notes:
+  - No OAuth scopes are documented (client-credentials, coarse-grained access).
+  - Do not attach the bearer token to the presigned S3 document-upload PUT request.
