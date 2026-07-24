@@ -1,0 +1,107 @@
+openapi: 3.1.0
+info:
+  title: Funding Circle Introducer Decisions Documents API
+  version: '1.0'
+  description: The Funding Circle Introducer API lets partners and brokers submit and manage UK small-business loan applications programmatically. It covers term business loans and FlexiPay applications, application status polling, credit decisions, and document upload. Faithfully transcribed by the API Evangelist enrichment pipeline from the published HTML developer reference; Funding Circle does not publish a machine-readable OpenAPI, so request/response schemas capture only the fields named in the documentation and are not exhaustive.
+  contact:
+    name: Funding Circle Developer
+    url: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+  x-apievangelist-generated: '2026-07-19'
+  x-apievangelist-method: generated
+  x-apievangelist-source: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+servers:
+- url: https://api.fundingcircle.co.uk/v1
+  description: Live
+- url: https://sandbox.api.fundingcircle.co.uk/v1
+  description: Sandbox
+security:
+- oauth2: []
+tags:
+- name: Documents
+  description: Upload supporting documents
+paths:
+  /loan_application/{loan_application_uuid}/document_upload_url:
+    get:
+      operationId: getDocumentUploadUrl
+      summary: Obtain a presigned document upload URL
+      description: Returns a presigned S3 URL (30-second expiry) to PUT a PDF document (max 100 MB). Do not send the bearer token on the subsequent PUT upload.
+      tags:
+      - Documents
+      parameters:
+      - $ref: '#/components/parameters/LoanApplicationUuid'
+      responses:
+        '200':
+          description: Presigned upload URL
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentUploadUrl'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+  /loan_application/{loan_application_uuid}/submit_required_action:
+    patch:
+      operationId: submitRequiredAction
+      summary: Submit an uploaded required action
+      description: Notify Funding Circle that a required document has been uploaded so processing can resume.
+      tags:
+      - Documents
+      parameters:
+      - $ref: '#/components/parameters/LoanApplicationUuid'
+      responses:
+        '200':
+          description: Required action accepted
+        '401':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+components:
+  parameters:
+    LoanApplicationUuid:
+      name: loan_application_uuid
+      in: path
+      required: true
+      description: The UUID returned when the loan application was created.
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    DocumentUploadUrl:
+      type: object
+      properties:
+        upload_url:
+          type: string
+          format: uri
+          description: Presigned S3 URL, expires in 30 seconds.
+    Problem:
+      type: object
+      description: RFC 7807 Problem Details.
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+  responses:
+    Problem:
+      description: RFC 7807 problem details
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Client Credentials grant (RFC 6749 §4.4). POST a base64 `client_id:client_secret` to the token endpoint to obtain a 24-hour bearer access token.
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.sandbox.api.fundingcircle.co.uk/oauth2/token
+          scopes: {}

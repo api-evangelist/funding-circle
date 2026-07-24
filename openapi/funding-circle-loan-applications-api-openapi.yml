@@ -1,0 +1,245 @@
+openapi: 3.1.0
+info:
+  title: Funding Circle Introducer Decisions Loan Applications API
+  version: '1.0'
+  description: The Funding Circle Introducer API lets partners and brokers submit and manage UK small-business loan applications programmatically. It covers term business loans and FlexiPay applications, application status polling, credit decisions, and document upload. Faithfully transcribed by the API Evangelist enrichment pipeline from the published HTML developer reference; Funding Circle does not publish a machine-readable OpenAPI, so request/response schemas capture only the fields named in the documentation and are not exhaustive.
+  contact:
+    name: Funding Circle Developer
+    url: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+  x-apievangelist-generated: '2026-07-19'
+  x-apievangelist-method: generated
+  x-apievangelist-source: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+servers:
+- url: https://api.fundingcircle.co.uk/v1
+  description: Live
+- url: https://sandbox.api.fundingcircle.co.uk/v1
+  description: Sandbox
+security:
+- oauth2: []
+tags:
+- name: Loan Applications
+  description: Create and manage business loan applications
+paths:
+  /loan_application:
+    post:
+      operationId: createLoanApplication
+      summary: Create a term loan application
+      description: Submit a new Funding Circle business term loan application.
+      tags:
+      - Loan Applications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoanApplicationRequest'
+      responses:
+        '201':
+          description: Loan application created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoanApplicationCreated'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+  /flexipay/loan_application:
+    post:
+      operationId: createFlexipayLoanApplication
+      summary: Create a FlexiPay loan application
+      description: Submit a new FlexiPay line-of-credit application.
+      tags:
+      - Loan Applications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlexipayLoanApplicationRequest'
+      responses:
+        '201':
+          description: FlexiPay application created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoanApplicationCreated'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '422':
+          $ref: '#/components/responses/Problem'
+  /loan_application_status/{loan_application_uuid}:
+    get:
+      operationId: getLoanApplicationStatus
+      summary: Check application processing status
+      description: Poll whether processing is ongoing (HTTP 202) or complete (HTTP 303).
+      tags:
+      - Loan Applications
+      parameters:
+      - $ref: '#/components/parameters/LoanApplicationUuid'
+      responses:
+        '202':
+          description: Processing ongoing
+        '303':
+          description: Processing complete
+        '401':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+  /loan_application/{loan_application_uuid}:
+    get:
+      operationId: getLoanApplication
+      summary: Retrieve a loan application
+      description: Retrieve the application. The `status` field is one of `in_progress`, `action_required`, or `decision_made`.
+      tags:
+      - Loan Applications
+      parameters:
+      - $ref: '#/components/parameters/LoanApplicationUuid'
+      responses:
+        '200':
+          description: Loan application
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoanApplication'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '410':
+          $ref: '#/components/responses/Problem'
+components:
+  parameters:
+    LoanApplicationUuid:
+      name: loan_application_uuid
+      in: path
+      required: true
+      description: The UUID returned when the loan application was created.
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    LoanApplication:
+      type: object
+      properties:
+        loan_application_uuid:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - in_progress
+          - action_required
+          - decision_made
+    FlexipayLoanApplicationRequest:
+      type: object
+      description: Like LoanApplicationRequest but without loan_info, loan_purpose, client_consent and broker_commission.
+      required:
+      - business_reference
+      - ebo_list
+      - customer_info
+      - business_info
+      properties:
+        business_reference:
+          type: object
+        ebo_list:
+          type: array
+          items:
+            type: object
+        customer_info:
+          type: object
+        business_info:
+          type: object
+        broker_email:
+          type: string
+        callback_url:
+          type: string
+          format: uri
+        partner_reference:
+          type: string
+    LoanApplicationRequest:
+      type: object
+      description: Documented top-level fields. Not exhaustive — nested field schemas are not published by Funding Circle.
+      required:
+      - business_reference
+      - ebo_list
+      - customer_info
+      - business_info
+      - loan_info
+      - loan_purpose
+      properties:
+        business_reference:
+          type: object
+          description: Companies House reference for the business.
+        ebo_list:
+          type: array
+          description: Executive Business Owners.
+          items:
+            type: object
+        customer_info:
+          type: object
+          description: Applicant director information.
+        business_info:
+          type: object
+          description: Company details.
+        loan_info:
+          type: object
+          description: Requested amount and term.
+        loan_purpose:
+          type: string
+          description: Purpose classification.
+        client_consent:
+          type: object
+          description: Application and privacy consent (broker submissions).
+        broker_commission:
+          type: number
+          description: 0-6% in 0.5% increments, tier-dependent (broker submissions).
+        broker_email:
+          type: string
+          description: Broker identifier (broker submissions).
+        callback_url:
+          type: string
+          format: uri
+          description: Webhook URL notified when action is required or a decision is made.
+        partner_reference:
+          type: string
+          description: Partner-internal identifier.
+    LoanApplicationCreated:
+      type: object
+      properties:
+        loan_application_uuid:
+          type: string
+          format: uuid
+    Problem:
+      type: object
+      description: RFC 7807 Problem Details.
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+  responses:
+    Problem:
+      description: RFC 7807 problem details
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 Client Credentials grant (RFC 6749 §4.4). POST a base64 `client_id:client_secret` to the token endpoint to obtain a 24-hour bearer access token.
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.sandbox.api.fundingcircle.co.uk/oauth2/token
+          scopes: {}
