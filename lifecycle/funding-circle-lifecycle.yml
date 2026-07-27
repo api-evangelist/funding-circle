@@ -1,0 +1,21 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No deprecation or Sunset/Deprecation-header policy is published.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+tokens:
+  access_token_ttl_seconds: 86400
+deprecated_operations: []
+notes:
+  - No public status page was found for the Introducer API.
+  - No published deprecation policy.

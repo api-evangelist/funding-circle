@@ -1,0 +1,27 @@
+# Funding Circle
+
+> Funding Circle is a UK small-business lending marketplace offering term business loans, FlexiPay lines of credit, a cashback business credit card, government-backed Growth Guarantee Scheme loans, and asset finance. Its Introducer API lets partners and brokers submit and manage loan applications programmatically using OAuth 2.0 client credentials, RFC 7807 error semantics, a sandbox with documented test values, and callback-URL webhooks.
+
+## API
+- [Introducer API reference](https://www.fundingcircle.com/uk/partners/developer/api-doc/): term and FlexiPay loan application submission, status polling, credit decisions, and document upload.
+
+## Specs
+- [OpenAPI (transcribed)](openapi/funding-circle-introducer-openapi.yml)
+
+## Artifacts
+- [Authentication](authentication/funding-circle-authentication.yml): OAuth 2.0 client-credentials, 24-hour bearer tokens.
+- [Error catalog (RFC 7807)](errors/funding-circle-problem-types.yml)
+- [Conventions](conventions/funding-circle-conventions.yml)
+- [Sandbox test values](sandbox/funding-circle-sandbox.yml)
+- [Lifecycle](lifecycle/funding-circle-lifecycle.yml)
+- [Webhooks](asyncapi/funding-circle-webhooks.yml)
+- [Data model](data-model/funding-circle-data-model.yml)
+- [MCP (candidate)](mcp/funding-circle-mcp.yml)
+
+## Docs
+- [Developer / API docs](https://www.fundingcircle.com/uk/partners/developer/api-doc/)
+- [Support](https://www.fundingcircle.com/uk/support/)
+- [Security](https://www.fundingcircle.com/uk/security/)
+- [Login](https://www.fundingcircle.com/uk/auth/login/)
+- [Platform terms of use](https://www.fundingcircle.com/uk/legal/platform-terms-of-use/)
+- [Privacy policy](https://www.fundingcircle.com/uk/legal/privacy-policy/)

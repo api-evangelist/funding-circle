@@ -1,0 +1,35 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/funding-circle-introducer-openapi.yml
+entities:
+  - name: loan_application
+    id_field: loan_application_uuid
+    id_format: uuid
+    description: A term or FlexiPay business loan application.
+    states: [in_progress, action_required, decision_made]
+  - name: decision
+    description: The credit decision for a loan application.
+    states: [provisional_offer, offered, rejected, action_required]
+  - name: document_upload
+    description: A presigned S3 upload target for a supporting document (PDF, max 100 MB).
+  - name: business_reference
+    description: Companies House reference identifying the applicant business.
+  - name: ebo
+    description: Executive Business Owner associated with the application.
+relationships:
+  - from: loan_application
+    to: decision
+    type: has_one
+    via: loan_application_uuid
+  - from: loan_application
+    to: document_upload
+    type: has_many
+    via: loan_application_uuid
+  - from: loan_application
+    to: business_reference
+    type: has_one
+    via: business_reference
+  - from: loan_application
+    to: ebo
+    type: has_many
+    via: ebo_list

@@ -1,0 +1,21 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Funding Circle Introducer API
+  version: 1.0.0
+extends: openapi/funding-circle-introducer-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-rating: 3
+      x-apievangelist-notes: >-
+        Transcribed from published HTML docs; no provider OpenAPI. OAuth2
+        client-credentials, RFC 7807 errors, sandbox with documented test values,
+        callback_url webhooks. No idempotency, pagination, or rate-limit policy
+        documented.
+  - target: $.info
+    update:
+      x-agentic-readiness:
+        auth: oauth2-client-credentials
+        errors: rfc7807
+        webhooks: callback-url
+        idempotency: not-documented

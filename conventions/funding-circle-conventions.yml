@@ -1,0 +1,40 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+authentication:
+  style: oauth2-client-credentials
+  header: 'Authorization: Bearer {access_token}'
+  token_ttl_seconds: 86400
+  ref: authentication/funding-circle-authentication.yml
+content_type:
+  request: application/json
+  note: Required for all requests except the presigned document-upload PUT.
+versioning:
+  style: uri-path
+  current: v1
+  ref: lifecycle/funding-circle-lifecycle.yml
+error_envelope:
+  standard: RFC 7807
+  media_type: application/problem+json
+  ref: errors/funding-circle-problem-types.yml
+request_tracing:
+  header: x-amzn-trace-id
+  description: Returned on responses for debugging (AWS X-Ray trace id).
+async_pattern:
+  style: async-request-reply
+  webhook_field: callback_url
+  polling: >-
+    Poll GET /loan_application_status/{uuid} — HTTP 202 while processing, HTTP
+    303 when complete — as a fallback to the callback.
+  ref: asyncapi/funding-circle-webhooks.yml
+idempotency:
+  supported: false
+  note: >-
+    No idempotency-key header or parameter is documented. partner_reference is a
+    correlation identifier, not a documented idempotency key.
+pagination:
+  supported: false
+  note: No list/collection endpoints are documented; all reads are by UUID.
+rate_limiting:
+  documented: false
+  note: No rate-limit policy or headers are published in the developer docs.

@@ -1,0 +1,39 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+environments:
+  live:
+    base_url: https://api.fundingcircle.co.uk/v1
+  sandbox:
+    base_url: https://sandbox.api.fundingcircle.co.uk/v1
+    token_url: https://auth.sandbox.api.fundingcircle.co.uk/oauth2/token
+separation:
+  model: separate-sandbox-host
+  note: Sandbox uses distinct base and auth hosts; obtain separate sandbox credentials.
+test_values:
+  companies_house_id:
+    field: companies_house_id
+    description: Drives simulated eligibility outcome (use the exact value).
+    values:
+      - value: '00000000'
+        outcome: low eligibility
+      - value: '00000001'
+        outcome: medium eligibility
+      - value: '00000002'
+        outcome: high eligibility
+  business_name:
+    field: business_name
+    description: Drives the simulated application outcome (use the exact value).
+    values:
+      - value: Bighead Catshark Ltd
+        outcome: successful with credit offer
+      - value: Blotchy Swellshark Ltd
+        outcome: requires additional documentation
+      - value: Loop Shark Ltd
+        outcome: remains in processing
+      - value: Broadmouth Shark Ltd
+        outcome: rejected
+      - value: Inflight Shark Ltd
+        outcome: error (ongoing application)
+known_limitations:
+  - Document uploads keep sandbox applications in in_progress indefinitely.

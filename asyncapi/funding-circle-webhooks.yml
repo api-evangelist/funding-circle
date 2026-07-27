@@ -1,0 +1,22 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+spec_type: Webhooks
+surface:
+  style: callback-url
+  description: >-
+    A per-application `callback_url` supplied at creation is invoked
+    (async request-reply) when the application needs an action or a decision is
+    made. Callbacks complement polling GET /loan_application_status/{uuid}.
+  registration:
+    field: callback_url
+    scope: per loan application
+events:
+  - name: action_required
+    trigger: The application requires the introducer to supply documents.
+    consumer_next: GET /loan_application/{uuid} then upload via document_upload_url.
+  - name: decision_made
+    trigger: A credit decision (provisional_offer, offered, or rejected) is available.
+    consumer_next: GET /loan_application/{uuid}/decision
+notes:
+  - Funding Circle publishes no AsyncAPI document; this captures the webhook surface only.

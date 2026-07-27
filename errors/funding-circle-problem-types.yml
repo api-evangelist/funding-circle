@@ -1,0 +1,49 @@
+generated: '2026-07-19'
+method: searched
+format: rfc7807
+source: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+envelope:
+  media_type: application/problem+json
+  standard: RFC 7807 (Problem Details for HTTP APIs)
+  trace_header: x-amzn-trace-id
+problems:
+  - code: BAD_REQUEST_BODY
+    status: 400
+    title: Bad request body
+    remediation: Correct the malformed or invalid JSON request body.
+  - code: BAD_REQUEST_PARAMETERS
+    status: 400
+    title: Bad request parameters
+    remediation: Correct the invalid query or path parameters.
+  - code: UNAUTHORIZED
+    status: 401
+    title: Unauthorized
+    remediation: Obtain a valid bearer access token via the client-credentials flow.
+  - code: ACCESS_DENIED
+    status: 403
+    title: Access denied
+    remediation: The credentials are not permitted to perform this action.
+  - code: FORBIDDEN
+    status: 403
+    title: Forbidden
+    remediation: The request is understood but refused.
+  - code: RESOURCE_NOT_FOUND
+    status: 404
+    title: Resource not found
+    remediation: Verify the loan_application_uuid.
+  - code: GONE
+    status: 410
+    title: Gone
+    remediation: The resource is no longer available.
+  - code: UNSUPPORTED_MEDIA_TYPE
+    status: 415
+    title: Unsupported media type
+    remediation: Send Content-Type application/json (except document uploads).
+  - code: UNPROCESSABLE_ENTITY
+    status: 422
+    title: Unprocessable entity
+    remediation: The request was well-formed but failed validation.
+  - code: FAILED_DEPENDENCY
+    status: 424
+    title: Failed dependency
+    remediation: A dependent action failed; retry after resolving upstream state.

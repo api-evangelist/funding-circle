@@ -1,0 +1,25 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/funding-circle-introducer-openapi.yml
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: OAuth 2.0 client-credentials grant (RFC 6749 Section 4.4).
+  - id: oauth2-client-credentials
+    conforms: true
+    evidence: Token obtained via base64 client_id:client_secret POST.
+  - id: rfc7807-problem-details
+    conforms: true
+    evidence: Errors use application/problem+json (Problem Details for HTTP APIs).
+  - id: oidc
+    conforms: false
+    evidence: No OpenID Connect discovery document served.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Docs cite RFC 7807, the predecessor, not RFC 9457.
+  - id: idempotency
+    conforms: false
+    evidence: No idempotency-key contract documented.
+  - id: pagination
+    conforms: false
+    evidence: No collection/list endpoints; reads are by UUID.

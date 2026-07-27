@@ -1,0 +1,13 @@
+generated: '2026-07-19'
+method: generated
+skills:
+  - file: funding-circle-submit-loan-application.md
+    name: Submit and track a Funding Circle loan application
+    api: openapi/funding-circle-introducer-openapi.yml
+    operations:
+      - createLoanApplication
+      - getLoanApplicationStatus
+      - getLoanApplication
+      - getLoanApplicationDecision
+      - getDocumentUploadUrl
+      - submitRequiredAction

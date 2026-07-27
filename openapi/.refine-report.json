@@ -1,0 +1,18 @@
+{
+  "provider": "funding-circle",
+  "sources": [
+    "funding-circle-decisions-api-openapi.yml",
+    "funding-circle-documents-api-openapi.yml",
+    "funding-circle-loan-applications-api-openapi.yml"
+  ],
+  "outputs": [
+    "funding-circle-decisions-api-openapi.yml",
+    "funding-circle-documents-api-openapi.yml",
+    "funding-circle-loan-applications-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

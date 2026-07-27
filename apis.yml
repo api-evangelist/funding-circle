@@ -1,8 +1,29 @@
 aid: funding-circle
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/funding-circle.png
 name: Funding Circle
-description: 'Funding Circle is a company surfaced as a portfolio company of accel, index-ventures, ribbit-capital,
-  union-square-ventures and added to the API Evangelist network as a stub for enrichment. Sector: consumer.
-  This profile is a lead awaiting the enrichment pipeline.'
+description: >-
+  Funding Circle is a UK small-business lending marketplace providing term
+  business loans, the FlexiPay revolving line of credit, a cashback business
+  credit card, government-backed Growth Guarantee Scheme loans, and asset
+  finance. For partners and brokers it publishes the Funding Circle Introducer
+  API, which lets platforms submit and manage business loan applications
+  programmatically: create term or FlexiPay applications, poll application
+  status, retrieve credit decisions, and upload supporting documents. The API
+  uses OAuth 2.0 client-credentials authentication, RFC 7807 problem-detail
+  errors, callback-URL webhooks, and a sandbox environment with documented test
+  values.
 url: https://raw.githubusercontent.com/api-evangelist/funding-circle/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -15,11 +36,59 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Consumer
-apis: []
+- Lending
+- Small Business
+- Fintech
+- Loans
+- Financial Services
+- Payments
+apis:
+- aid: funding-circle:funding-circle-decisions-api
+  name: Funding Circle Decisions API
+  description: Retrieve credit decisions
+  humanURL: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+  baseURL: https://api.fundingcircle.co.uk/v1
+  tags:
+  - Decisions
+  properties:
+  - type: OpenAPI
+    url: openapi/funding-circle-decisions-api-openapi.yml
+  - type: Documentation
+    url: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+  - type: APIReference
+    url: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+- aid: funding-circle:funding-circle-documents-api
+  name: Funding Circle Documents API
+  description: Upload supporting documents
+  humanURL: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+  baseURL: https://api.fundingcircle.co.uk/v1
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/funding-circle-documents-api-openapi.yml
+  - type: Documentation
+    url: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+  - type: APIReference
+    url: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+- aid: funding-circle:funding-circle-loan-applications-api
+  name: Funding Circle Loan Applications API
+  description: Create and manage business loan applications
+  humanURL: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+  baseURL: https://api.fundingcircle.co.uk/v1
+  tags:
+  - Loan Applications
+  properties:
+  - type: OpenAPI
+    url: openapi/funding-circle-loan-applications-api-openapi.yml
+  - type: Documentation
+    url: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+  - type: APIReference
+    url: https://www.fundingcircle.com/uk/partners/developer/api-doc/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -28,3 +97,50 @@ maintainers:
 common:
 - type: Website
   url: http://www.fundingcircle.com
+- type: DeveloperPortal
+  url: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+- type: Documentation
+  url: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+- type: APIReference
+  url: https://www.fundingcircle.com/uk/partners/developer/api-doc/
+- type: Support
+  url: https://www.fundingcircle.com/uk/support/
+- type: Login
+  url: https://www.fundingcircle.com/uk/auth/login/
+- type: TermsOfService
+  url: https://www.fundingcircle.com/uk/legal/platform-terms-of-use/
+- type: PrivacyPolicy
+  url: https://www.fundingcircle.com/uk/legal/privacy-policy/
+- type: GitHubOrganization
+  url: https://github.com/FundingCircle
+- type: Authentication
+  url: authentication/funding-circle-authentication.yml
+- type: ErrorCatalog
+  url: errors/funding-circle-problem-types.yml
+- type: Conventions
+  url: conventions/funding-circle-conventions.yml
+- type: Sandbox
+  url: sandbox/funding-circle-sandbox.yml
+- type: Lifecycle
+  url: lifecycle/funding-circle-lifecycle.yml
+- type: Webhooks
+  url: asyncapi/funding-circle-webhooks.yml
+- type: MCPServer
+  url: mcp/funding-circle-mcp.yml
+- type: Conformance
+  url: conformance/funding-circle-conformance.yml
+- type: DataModel
+  url: data-model/funding-circle-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/funding-circle-llms.txt
+- type: Overlay
+  url: overlays/funding-circle-introducer-overlay.yaml
+- type: DomainSecurity
+  url: security/funding-circle-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
