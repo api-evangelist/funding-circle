@@ -1,0 +1,502 @@
+{
+  "item": [
+    {
+      "id": "bbd2d3f3-1273-44b4-96d7-0b42ff407f55",
+      "name": "Documents",
+      "description": {
+        "content": "Upload supporting documents",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "465070a1-1edf-4782-97ad-2b3f5ae65654",
+          "name": "Obtain a presigned document upload URL",
+          "request": {
+            "name": "Obtain a presigned document upload URL",
+            "description": {
+              "content": "Returns a presigned S3 URL (30-second expiry) to PUT a PDF document (max 100 MB). Do not send the bearer token on the subsequent PUT upload.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loan_application",
+                ":loan_application_uuid",
+                "document_upload_url"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "loan_application_uuid",
+                  "description": "(Required) The UUID returned when the loan application was created."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b31f360d-2307-4994-b949-4cf65232eb9c",
+              "name": "Presigned upload URL",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loan_application",
+                    ":loan_application_uuid",
+                    "document_upload_url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "loan_application_uuid",
+                      "description": "(Required) The UUID returned when the loan application was created."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"upload_url\": \"http://dcCf.tqdNuSLv6guqSqRSNJN5WMWKWxxxupTpBLG2JPt,50R6JC\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2fb9b5cb-8a1b-407d-9c0d-9a30409afb2c",
+              "name": "RFC 7807 problem details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loan_application",
+                    ":loan_application_uuid",
+                    "document_upload_url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "loan_application_uuid",
+                      "description": "(Required) The UUID returned when the loan application was created."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 5809,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "adb48e46-4d14-4684-ae0a-a51c38d6f815",
+              "name": "RFC 7807 problem details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loan_application",
+                    ":loan_application_uuid",
+                    "document_upload_url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "loan_application_uuid",
+                      "description": "(Required) The UUID returned when the loan application was created."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 5809,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80eb8c03-43e5-467b-882a-33384f350610",
+          "name": "Submit an uploaded required action",
+          "request": {
+            "name": "Submit an uploaded required action",
+            "description": {
+              "content": "Notify Funding Circle that a required document has been uploaded so processing can resume.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loan_application",
+                ":loan_application_uuid",
+                "submit_required_action"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "loan_application_uuid",
+                  "description": "(Required) The UUID returned when the loan application was created."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/problem+json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f31b241f-990f-4c7a-96f7-621978fbf185",
+              "name": "Required action accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loan_application",
+                    ":loan_application_uuid",
+                    "submit_required_action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "loan_application_uuid",
+                      "description": "(Required) The UUID returned when the loan application was created."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5083c339-8224-4cec-9b16-d95a62e579fe",
+              "name": "RFC 7807 problem details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loan_application",
+                    ":loan_application_uuid",
+                    "submit_required_action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "loan_application_uuid",
+                      "description": "(Required) The UUID returned when the loan application was created."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 5809,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c3195ab-1399-4804-95fe-b00f0bc5b0ac",
+              "name": "RFC 7807 problem details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loan_application",
+                    ":loan_application_uuid",
+                    "submit_required_action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "loan_application_uuid",
+                      "description": "(Required) The UUID returned when the loan application was created."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 5809,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86903727-93db-47a3-8110-4b793ecc4c2b",
+              "name": "RFC 7807 problem details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loan_application",
+                    ":loan_application_uuid",
+                    "submit_required_action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "loan_application_uuid",
+                      "description": "(Required) The UUID returned when the loan application was created."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 5809,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fundingcircle.co.uk/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.sandbox.api.fundingcircle.co.uk/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d3babc34-4757-4ef1-b122-daf5cbfb59e6",
+    "name": "Funding Circle Introducer Decisions Documents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Funding Circle Introducer API lets partners and brokers submit and manage UK small-business loan applications programmatically. It covers term business loans and FlexiPay applications, application status polling, credit decisions, and document upload. Faithfully transcribed by the API Evangelist enrichment pipeline from the published HTML developer reference; Funding Circle does not publish a machine-readable OpenAPI, so request/response schemas capture only the fields named in the documentation and are not exhaustive.\n\nContact Support:\n Name: Funding Circle Developer",
+      "type": "text/plain"
+    }
+  }
+}

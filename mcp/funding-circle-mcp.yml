@@ -7,27 +7,33 @@ server:
   transport: http
   url: null
 notes:
-  - No official Funding Circle MCP server was found; tools are a candidate list
-    derived one-per-operation from the Introducer API OpenAPI.
+- No official Funding Circle MCP server was found; tools are a candidate list derived one-per-operation
+  from the Introducer API OpenAPI.
 tools:
-  - name: create_loan_application
-    description: Create a term business loan application
-    source_operation: openapi/funding-circle-introducer-openapi.yml#createLoanApplication
-  - name: create_flexipay_loan_application
-    description: Create a FlexiPay line-of-credit application
-    source_operation: openapi/funding-circle-introducer-openapi.yml#createFlexipayLoanApplication
-  - name: get_loan_application_status
-    description: Poll whether processing is ongoing (202) or complete (303)
-    source_operation: openapi/funding-circle-introducer-openapi.yml#getLoanApplicationStatus
-  - name: get_loan_application
-    description: Retrieve a loan application and its status
-    source_operation: openapi/funding-circle-introducer-openapi.yml#getLoanApplication
-  - name: get_loan_application_decision
-    description: Retrieve the credit decision for an application
-    source_operation: openapi/funding-circle-introducer-openapi.yml#getLoanApplicationDecision
-  - name: get_document_upload_url
-    description: Obtain a presigned URL to upload a supporting document
-    source_operation: openapi/funding-circle-introducer-openapi.yml#getDocumentUploadUrl
-  - name: submit_required_action
-    description: Notify Funding Circle that a required document was uploaded
-    source_operation: openapi/funding-circle-introducer-openapi.yml#submitRequiredAction
+- name: create_loan_application
+  description: Create a term business loan application
+  source_operation: openapi/funding-circle-introducer-openapi.yml#createLoanApplication
+- name: create_flexipay_loan_application
+  description: Create a FlexiPay line-of-credit application
+  source_operation: openapi/funding-circle-introducer-openapi.yml#createFlexipayLoanApplication
+- name: get_loan_application_status
+  description: Poll whether processing is ongoing (202) or complete (303)
+  source_operation: openapi/funding-circle-introducer-openapi.yml#getLoanApplicationStatus
+- name: get_loan_application
+  description: Retrieve a loan application and its status
+  source_operation: openapi/funding-circle-introducer-openapi.yml#getLoanApplication
+- name: get_loan_application_decision
+  description: Retrieve the credit decision for an application
+  source_operation: openapi/funding-circle-introducer-openapi.yml#getLoanApplicationDecision
+- name: get_document_upload_url
+  description: Obtain a presigned URL to upload a supporting document
+  source_operation: openapi/funding-circle-introducer-openapi.yml#getDocumentUploadUrl
+- name: submit_required_action
+  description: Notify Funding Circle that a required document was uploaded
+  source_operation: openapi/funding-circle-introducer-openapi.yml#submitRequiredAction
+deployment:
+  mode: none
+  verified: derived
+  tools: 7
+  checked: '2026-08-12'
+  source: catalog MCP census

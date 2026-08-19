@@ -1,0 +1,249 @@
+{
+  "item": [
+    {
+      "id": "190d6269-0b49-485f-a6be-c7abe633e898",
+      "name": "Decisions",
+      "description": {
+        "content": "Retrieve credit decisions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "32c03244-28bf-4110-a0a7-c627bce47c55",
+          "name": "Retrieve the credit decision",
+          "request": {
+            "name": "Retrieve the credit decision",
+            "description": {
+              "content": "Retrieve the decision. `status` is one of `provisional_offer`, `offered`, `rejected`, or `action_required`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loan_application",
+                ":loan_application_uuid",
+                "decision"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "loan_application_uuid",
+                  "description": "(Required) The UUID returned when the loan application was created."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f564f9c8-b068-47c9-a64e-1a4845d34012",
+              "name": "Credit decision",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loan_application",
+                    ":loan_application_uuid",
+                    "decision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "loan_application_uuid",
+                      "description": "(Required) The UUID returned when the loan application was created."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"rejected\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6204e4f0-b8b9-4491-a83b-d598bfdbefb2",
+              "name": "RFC 7807 problem details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loan_application",
+                    ":loan_application_uuid",
+                    "decision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "loan_application_uuid",
+                      "description": "(Required) The UUID returned when the loan application was created."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2163,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "726f1a83-1371-4476-9a94-163ea5f9e39a",
+              "name": "RFC 7807 problem details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loan_application",
+                    ":loan_application_uuid",
+                    "decision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "loan_application_uuid",
+                      "description": "(Required) The UUID returned when the loan application was created."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2163,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fundingcircle.co.uk/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.sandbox.api.fundingcircle.co.uk/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "945dc1ad-dc0f-4945-9a3d-c8a499bcff07",
+    "name": "Funding Circle Introducer Decisions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Funding Circle Introducer API lets partners and brokers submit and manage UK small-business loan applications programmatically. It covers term business loans and FlexiPay applications, application status polling, credit decisions, and document upload. Faithfully transcribed by the API Evangelist enrichment pipeline from the published HTML developer reference; Funding Circle does not publish a machine-readable OpenAPI, so request/response schemas capture only the fields named in the documentation and are not exhaustive.\n\nContact Support:\n Name: Funding Circle Developer",
+      "type": "text/plain"
+    }
+  }
+}

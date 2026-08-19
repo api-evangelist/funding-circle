@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Funding Circle Introducer Decisions Loan Applications API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://auth.sandbox.api.fundingcircle.co.uk/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Loan Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a term loan application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fundingcircle.co.uk/v1/loan_application",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a new Funding Circle business term loan application."
+        },
+        {
+          "info": {
+            "name": "Create a FlexiPay loan application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fundingcircle.co.uk/v1/flexipay/loan_application",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a new FlexiPay line-of-credit application."
+        },
+        {
+          "info": {
+            "name": "Check application processing status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fundingcircle.co.uk/v1/loan_application_status/:loan_application_uuid",
+            "params": [
+              {
+                "name": "loan_application_uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID returned when the loan application was created."
+              }
+            ]
+          },
+          "docs": "Poll whether processing is ongoing (HTTP 202) or complete (HTTP 303)."
+        },
+        {
+          "info": {
+            "name": "Retrieve a loan application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fundingcircle.co.uk/v1/loan_application/:loan_application_uuid",
+            "params": [
+              {
+                "name": "loan_application_uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID returned when the loan application was created."
+              }
+            ]
+          },
+          "docs": "Retrieve the application. The `status` field is one of `in_progress`, `action_required`, or `decision_made`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

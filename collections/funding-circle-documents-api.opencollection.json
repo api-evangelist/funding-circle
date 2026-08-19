@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Funding Circle Introducer Decisions Documents API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://auth.sandbox.api.fundingcircle.co.uk/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Obtain a presigned document upload URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fundingcircle.co.uk/v1/loan_application/:loan_application_uuid/document_upload_url",
+            "params": [
+              {
+                "name": "loan_application_uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID returned when the loan application was created."
+              }
+            ]
+          },
+          "docs": "Returns a presigned S3 URL (30-second expiry) to PUT a PDF document (max 100 MB). Do not send the bearer token on the subsequent PUT upload."
+        },
+        {
+          "info": {
+            "name": "Submit an uploaded required action",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.fundingcircle.co.uk/v1/loan_application/:loan_application_uuid/submit_required_action",
+            "params": [
+              {
+                "name": "loan_application_uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID returned when the loan application was created."
+              }
+            ]
+          },
+          "docs": "Notify Funding Circle that a required document has been uploaded so processing can resume."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

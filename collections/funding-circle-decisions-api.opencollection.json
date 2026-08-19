@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Funding Circle Introducer Decisions API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://auth.sandbox.api.fundingcircle.co.uk/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Decisions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve the credit decision",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fundingcircle.co.uk/v1/loan_application/:loan_application_uuid/decision",
+            "params": [
+              {
+                "name": "loan_application_uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID returned when the loan application was created."
+              }
+            ]
+          },
+          "docs": "Retrieve the decision. `status` is one of `provisional_offer`, `offered`, `rejected`, or `action_required`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
