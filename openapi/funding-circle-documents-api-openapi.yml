@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Funding Circle Introducer Decisions Documents API
+  title: Funding Circle Introducer Documents API
   version: '1.0'
-  description: The Funding Circle Introducer API lets partners and brokers submit and manage UK small-business loan applications programmatically. It covers term business loans and FlexiPay applications, application status polling, credit decisions, and document upload. Faithfully transcribed by the API Evangelist enrichment pipeline from the published HTML developer reference; Funding Circle does not publish a machine-readable OpenAPI, so request/response schemas capture only the fields named in the documentation and are not exhaustive.
+  description: The Funding Circle Introducer API lets partners and brokers submit and manage UK small-business loan applications programmatically.
   contact:
     name: Funding Circle Developer
     url: https://www.fundingcircle.com/uk/partners/developer/api-doc/
@@ -59,15 +59,6 @@ paths:
         '422':
           $ref: '#/components/responses/Problem'
 components:
-  parameters:
-    LoanApplicationUuid:
-      name: loan_application_uuid
-      in: path
-      required: true
-      description: The UUID returned when the loan application was created.
-      schema:
-        type: string
-        format: uuid
   schemas:
     DocumentUploadUrl:
       type: object
@@ -97,6 +88,15 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/Problem'
+  parameters:
+    LoanApplicationUuid:
+      name: loan_application_uuid
+      in: path
+      required: true
+      description: The UUID returned when the loan application was created.
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     oauth2:
       type: oauth2

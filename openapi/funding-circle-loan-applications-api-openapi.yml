@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Funding Circle Introducer Decisions Loan Applications API
+  title: Funding Circle Introducer Loan Applications API
   version: '1.0'
-  description: The Funding Circle Introducer API lets partners and brokers submit and manage UK small-business loan applications programmatically. It covers term business loans and FlexiPay applications, application status polling, credit decisions, and document upload. Faithfully transcribed by the API Evangelist enrichment pipeline from the published HTML developer reference; Funding Circle does not publish a machine-readable OpenAPI, so request/response schemas capture only the fields named in the documentation and are not exhaustive.
+  description: The Funding Circle Introducer API lets partners and brokers submit and manage UK small-business loan applications programmatically.
   contact:
     name: Funding Circle Developer
     url: https://www.fundingcircle.com/uk/partners/developer/api-doc/
@@ -113,28 +113,7 @@ paths:
         '410':
           $ref: '#/components/responses/Problem'
 components:
-  parameters:
-    LoanApplicationUuid:
-      name: loan_application_uuid
-      in: path
-      required: true
-      description: The UUID returned when the loan application was created.
-      schema:
-        type: string
-        format: uuid
   schemas:
-    LoanApplication:
-      type: object
-      properties:
-        loan_application_uuid:
-          type: string
-          format: uuid
-        status:
-          type: string
-          enum:
-          - in_progress
-          - action_required
-          - decision_made
     FlexipayLoanApplicationRequest:
       type: object
       description: Like LoanApplicationRequest but without loan_info, loan_purpose, client_consent and broker_commission.
@@ -160,6 +139,38 @@ components:
           type: string
           format: uri
         partner_reference:
+          type: string
+    LoanApplicationCreated:
+      type: object
+      properties:
+        loan_application_uuid:
+          type: string
+          format: uuid
+    LoanApplication:
+      type: object
+      properties:
+        loan_application_uuid:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - in_progress
+          - action_required
+          - decision_made
+    Problem:
+      type: object
+      description: RFC 7807 Problem Details.
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
           type: string
     LoanApplicationRequest:
       type: object
@@ -208,26 +219,6 @@ components:
         partner_reference:
           type: string
           description: Partner-internal identifier.
-    LoanApplicationCreated:
-      type: object
-      properties:
-        loan_application_uuid:
-          type: string
-          format: uuid
-    Problem:
-      type: object
-      description: RFC 7807 Problem Details.
-      properties:
-        type:
-          type: string
-        title:
-          type: string
-        status:
-          type: integer
-        detail:
-          type: string
-        instance:
-          type: string
   responses:
     Problem:
       description: RFC 7807 problem details
@@ -235,6 +226,15 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/Problem'
+  parameters:
+    LoanApplicationUuid:
+      name: loan_application_uuid
+      in: path
+      required: true
+      description: The UUID returned when the loan application was created.
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     oauth2:
       type: oauth2
