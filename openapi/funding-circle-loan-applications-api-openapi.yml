@@ -113,39 +113,16 @@ paths:
         '410':
           $ref: '#/components/responses/Problem'
 components:
+  parameters:
+    LoanApplicationUuid:
+      name: loan_application_uuid
+      in: path
+      required: true
+      description: The UUID returned when the loan application was created.
+      schema:
+        type: string
+        format: uuid
   schemas:
-    FlexipayLoanApplicationRequest:
-      type: object
-      description: Like LoanApplicationRequest but without loan_info, loan_purpose, client_consent and broker_commission.
-      required:
-      - business_reference
-      - ebo_list
-      - customer_info
-      - business_info
-      properties:
-        business_reference:
-          type: object
-        ebo_list:
-          type: array
-          items:
-            type: object
-        customer_info:
-          type: object
-        business_info:
-          type: object
-        broker_email:
-          type: string
-        callback_url:
-          type: string
-          format: uri
-        partner_reference:
-          type: string
-    LoanApplicationCreated:
-      type: object
-      properties:
-        loan_application_uuid:
-          type: string
-          format: uuid
     LoanApplication:
       type: object
       properties:
@@ -158,20 +135,6 @@ components:
           - in_progress
           - action_required
           - decision_made
-    Problem:
-      type: object
-      description: RFC 7807 Problem Details.
-      properties:
-        type:
-          type: string
-        title:
-          type: string
-        status:
-          type: integer
-        detail:
-          type: string
-        instance:
-          type: string
     LoanApplicationRequest:
       type: object
       description: Documented top-level fields. Not exhaustive — nested field schemas are not published by Funding Circle.
@@ -219,6 +182,52 @@ components:
         partner_reference:
           type: string
           description: Partner-internal identifier.
+    Problem:
+      type: object
+      description: RFC 7807 Problem Details.
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+    LoanApplicationCreated:
+      type: object
+      properties:
+        loan_application_uuid:
+          type: string
+          format: uuid
+    FlexipayLoanApplicationRequest:
+      type: object
+      description: Like LoanApplicationRequest but without loan_info, loan_purpose, client_consent and broker_commission.
+      required:
+      - business_reference
+      - ebo_list
+      - customer_info
+      - business_info
+      properties:
+        business_reference:
+          type: object
+        ebo_list:
+          type: array
+          items:
+            type: object
+        customer_info:
+          type: object
+        business_info:
+          type: object
+        broker_email:
+          type: string
+        callback_url:
+          type: string
+          format: uri
+        partner_reference:
+          type: string
   responses:
     Problem:
       description: RFC 7807 problem details
@@ -226,15 +235,6 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/Problem'
-  parameters:
-    LoanApplicationUuid:
-      name: loan_application_uuid
-      in: path
-      required: true
-      description: The UUID returned when the loan application was created.
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     oauth2:
       type: oauth2

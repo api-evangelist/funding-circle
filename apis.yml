@@ -56,7 +56,7 @@ tags:
 - Small Business
 - Fintech
 - Loans
-- Financial-Services
+- Financial Services
 - Payments
 tags_raw:
 - Company
@@ -67,6 +67,7 @@ tags_raw:
 - Loans
 - Financial Services
 - Payments
+- Financial-Services
 apis:
 - aid: funding-circle:funding-circle-decisions-api
   name: Funding Circle Decisions API
