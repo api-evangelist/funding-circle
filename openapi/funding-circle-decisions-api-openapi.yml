@@ -41,22 +41,6 @@ paths:
         '404':
           $ref: '#/components/responses/Problem'
 components:
-  parameters:
-    LoanApplicationUuid:
-      name: loan_application_uuid
-      in: path
-      required: true
-      description: The UUID returned when the loan application was created.
-      schema:
-        type: string
-        format: uuid
-  responses:
-    Problem:
-      description: RFC 7807 problem details
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/Problem'
   schemas:
     Problem:
       type: object
@@ -82,6 +66,22 @@ components:
           - offered
           - rejected
           - action_required
+  responses:
+    Problem:
+      description: RFC 7807 problem details
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+  parameters:
+    LoanApplicationUuid:
+      name: loan_application_uuid
+      in: path
+      required: true
+      description: The UUID returned when the loan application was created.
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     oauth2:
       type: oauth2
