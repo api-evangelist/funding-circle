@@ -113,15 +113,6 @@ paths:
         '410':
           $ref: '#/components/responses/Problem'
 components:
-  parameters:
-    LoanApplicationUuid:
-      name: loan_application_uuid
-      in: path
-      required: true
-      description: The UUID returned when the loan application was created.
-      schema:
-        type: string
-        format: uuid
   schemas:
     LoanApplication:
       type: object
@@ -135,20 +126,6 @@ components:
           - in_progress
           - action_required
           - decision_made
-    Problem:
-      type: object
-      description: RFC 7807 Problem Details.
-      properties:
-        type:
-          type: string
-        title:
-          type: string
-        status:
-          type: integer
-        detail:
-          type: string
-        instance:
-          type: string
     LoanApplicationCreated:
       type: object
       properties:
@@ -180,6 +157,20 @@ components:
           type: string
           format: uri
         partner_reference:
+          type: string
+    Problem:
+      type: object
+      description: RFC 7807 Problem Details.
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
           type: string
     LoanApplicationRequest:
       type: object
@@ -228,6 +219,15 @@ components:
         partner_reference:
           type: string
           description: Partner-internal identifier.
+  parameters:
+    LoanApplicationUuid:
+      name: loan_application_uuid
+      in: path
+      required: true
+      description: The UUID returned when the loan application was created.
+      schema:
+        type: string
+        format: uuid
   responses:
     Problem:
       description: RFC 7807 problem details

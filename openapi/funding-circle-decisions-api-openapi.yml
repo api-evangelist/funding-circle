@@ -41,6 +41,13 @@ paths:
         '404':
           $ref: '#/components/responses/Problem'
 components:
+  responses:
+    Problem:
+      description: RFC 7807 problem details
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
   schemas:
     Problem:
       type: object
@@ -66,13 +73,6 @@ components:
           - offered
           - rejected
           - action_required
-  responses:
-    Problem:
-      description: RFC 7807 problem details
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/Problem'
   parameters:
     LoanApplicationUuid:
       name: loan_application_uuid
