@@ -67,6 +67,13 @@ components:
           schema:
             $ref: '#/components/schemas/Problem'
   schemas:
+    DocumentUploadUrl:
+      type: object
+      properties:
+        upload_url:
+          type: string
+          format: uri
+          description: Presigned S3 URL, expires in 30 seconds.
     Problem:
       type: object
       description: RFC 7807 Problem Details.
@@ -81,13 +88,6 @@ components:
           type: string
         instance:
           type: string
-    DocumentUploadUrl:
-      type: object
-      properties:
-        upload_url:
-          type: string
-          format: uri
-          description: Presigned S3 URL, expires in 30 seconds.
   parameters:
     LoanApplicationUuid:
       name: loan_application_uuid

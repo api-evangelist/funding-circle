@@ -49,6 +49,16 @@ components:
           schema:
             $ref: '#/components/schemas/Problem'
   schemas:
+    Decision:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - provisional_offer
+          - offered
+          - rejected
+          - action_required
     Problem:
       type: object
       description: RFC 7807 Problem Details.
@@ -63,16 +73,6 @@ components:
           type: string
         instance:
           type: string
-    Decision:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - provisional_offer
-          - offered
-          - rejected
-          - action_required
   parameters:
     LoanApplicationUuid:
       name: loan_application_uuid
