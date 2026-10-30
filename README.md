@@ -64,6 +64,118 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Funding Circle is a company surfaced as a portfolio company of accel, index-ventures, ribbit-capital, union-square-ventures and added to the API Evangelist network as a stub for enrichment. Sector: consumer. This profile is a lead awaiting the enrichment pipeline.
+Funding Circle is a UK small-business lending marketplace providing term business loans, the FlexiPay revolving line of credit, a cashback business credit card, government-backed Growth Guarantee Scheme loans, and asset finance. For partners and brokers it publishes the Funding Circle Introducer API, which lets platforms submit and manage business loan applications programmatically: create term or FlexiPay applications, poll application status, retrieve credit decisions, and upload supporting documents. The API uses OAuth 2.0 client-credentials authentication, RFC 7807 problem-detail errors, callback-URL webhooks, and a sandbox environment with documented test values.
 
-Backed by: accel, index-ventures, ribbit-capital, union-square-ventures — http://www.fundingcircle.com
+**Areas:** Company · Consumer · Lending · Small Business · Fintech · Loans · Financial Services · Payments
+
+## Funding Circle on APIs.io
+
+Everything profiled for Funding Circle is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/funding-circle/](https://apis.io/providers/funding-circle/)** — or go straight to one of the APIs or properties below.
+
+### APIs (3)
+
+- [Funding Circle Decisions API](https://apis.io/apis/funding-circle/funding-circle-decisions-api/) — Retrieve credit decisions
+- [Funding Circle Documents API](https://apis.io/apis/funding-circle/funding-circle-documents-api/) — Upload supporting documents
+- [Funding Circle Loan Applications API](https://apis.io/apis/funding-circle/funding-circle-loan-applications-api/) — Create and manage business loan applications
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Funding Circle Webhooks](https://apis.io/asyncapis/funding-circle/funding-circle-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [funding-circle](https://apis.io/servers/funding-circle/funding-circle/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [Funding Circle Introducer Decisions API](https://apis.io/collections/funding-circle/open-funding-circle-decisions-api/)
+- [Funding Circle Introducer Decisions Documents API](https://apis.io/collections/funding-circle/open-funding-circle-documents-api/)
+- [Funding Circle Introducer Decisions Loan Applications API](https://apis.io/collections/funding-circle/open-funding-circle-loan-applications-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Funding Circle Introducer Overlay](https://apis.io/overlays/funding-circle/funding-circle-introducer-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Funding Circle Authentication](https://apis.io/security/funding-circle/funding-circle-authentication/)
+- [Funding Circle Domain Security](https://apis.io/security/funding-circle/funding-circle-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](http://www.fundingcircle.com)
+- [Documentation](https://www.fundingcircle.com/uk/partners/developer/api-doc/)
+- [API reference](https://www.fundingcircle.com/uk/partners/developer/api-doc/)
+- [Support](https://www.fundingcircle.com/uk/support/)
+- [Terms of service](https://www.fundingcircle.com/uk/legal/platform-terms-of-use/)
+- [Privacy policy](https://www.fundingcircle.com/uk/legal/privacy-policy/)
+- [GitHub](https://github.com/FundingCircle)
+
+## API Evangelist rating
+
+**Kin Score 30.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 21.6 |
+| Contract governance | 4.5 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 51.8 |
+| Access clarity | 27.6 |
+
+**Agent readiness 26.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 22.3** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/funding-circle/](https://apis.io/providers/funding-circle/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Funding Circle: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/funding-circle/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
